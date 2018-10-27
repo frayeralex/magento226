@@ -1,0 +1,23 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+?>
+
+<div class="content-wrapper">
+    <h1 class="page-title">Person Details</h1>
+    <div class="person-details">
+        <?php if ($block->getPersonName()):?>
+            <div class="name">
+                <?= /* @escapeNotVerified */ $block->getPersonName(); ?>
+            </div>
+        <?php endif;?>
+        <?php if ($block->getPersonLastName()):?>
+            <div class="last-name">
+                <?= /* @escapeNotVerified */ $block->getPersonLastName(); ?>
+            </div>
+        <?php endif;?>
+    </div>
+
+    <div>
+        <a href="<?=  $block->getDefaultRouterLink(); ?>">Default Router Is</a>
+    </div>
+</div>
