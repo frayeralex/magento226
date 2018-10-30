@@ -28,7 +28,6 @@
                 as="dada_discount_banner"
                 template="Magento_Theme::dada/discount_banner_template.phtml">
                 <arguments>
-                    <argument name="banner_img_src" xsi:type="string">https://banner2.kisspng.com/20180626/lrq/kisspng-garage-sale-sales-clip-art-sale-10-5b32fd3029f2d4.7976958815300682721718.jpg</argument>
                     <argument name="discount_text" xsi:type="string">Only today click and get discount 10%</argument>
                 </arguments>
             </block>
