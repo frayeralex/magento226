@@ -6,7 +6,7 @@
  * Time: 09:18
  */
 
-namespace Geekhub\Lesson3\Controller\Demonstration;
+namespace Boyko\PersonRoute\Controller\Demonstration;
 
 use Magento\Framework\Controller\ResultFactory;
 
@@ -25,7 +25,7 @@ class ShowPerson extends \Magento\Framework\App\Action\Action
         $resultPage->getLayout()
             ->getBlock('boyko.person.page.details')
             ->setPersonName($name)
-            ->setPersonLastNAme($lastName);
+            ->setPersonLastName($lastName);
         return $resultPage;
     }
 }

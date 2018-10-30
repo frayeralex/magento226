@@ -6,7 +6,9 @@
  * Time: 09:22
  */
 
-namespace Geekhub\Lesson3\Block;
+namespace Boyko\PersonRoute\Block;
+
+
 class CustomBlock extends \Magento\Framework\View\Element\Template
 {
     const PERSON_DETAILS_TEMPLATE = "Boyko_PersonRoute::person/detailsTemplate.phtml";
@@ -21,6 +23,6 @@ class CustomBlock extends \Magento\Framework\View\Element\Template
     }
 
     public function getDefaultRouterLink() {
-        return $this->getUrl('boyko_personroute/demonstration/jsonresponse');
+        return $this->getUrl('boyko_personroute/demonstration/json');
     }
 }

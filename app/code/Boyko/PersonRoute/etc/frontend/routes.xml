@@ -6,7 +6,7 @@
     <!--Use router 'admin' for admin route, AND PUT THIS file to etc/adminhtml -->
     <router id="standard">
         <!--Define a custom route with id and frontName-->
-        <route id="boyko_personroute" frontName="home-work">
+        <route id="boyko_personroute" frontName="person">
             <!--The module which this route match to-->
             <module name="Boyko_PersonRoute" />
         </route>

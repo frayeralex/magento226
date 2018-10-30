@@ -6,9 +6,12 @@
  * Time: 09:15
  */
 
-namespace Geekhub\Lesson3\Controller\Demonstration;
+namespace Boyko\PersonRoute\Controller\Demonstration;
+
 use Magento\Framework\Controller\ResultFactory;
-class JsonResponse extends \Magento\Framework\App\Action\Action
+
+
+class Json extends \Magento\Framework\App\Action\Action
 {
     /**
      * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface
@@ -17,9 +20,11 @@ class JsonResponse extends \Magento\Framework\App\Action\Action
     {
         /** @var \Magento\Framework\Controller\Result\Json $controllerResult */
         $controllerResult = $this->resultFactory->create(ResultFactory::TYPE_JSON);
-        // todo create response
 
-        $data = ['defaultRotesIs' => "Default Router Is"];
+        $data = ['person' => [
+            'firstName' => 'Oleksiy',
+            'secondName' => 'Boyko'
+        ]];
         return $controllerResult->setData($data);
     }
 }
