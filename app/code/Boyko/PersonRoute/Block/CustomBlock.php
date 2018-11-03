@@ -8,7 +8,6 @@
 
 namespace Boyko\PersonRoute\Block;
 
-
 class CustomBlock extends \Magento\Framework\View\Element\Template
 {
     const PERSON_DETAILS_TEMPLATE = "Boyko_PersonRoute::person/detailsTemplate.phtml";
