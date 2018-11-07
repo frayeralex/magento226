@@ -69,7 +69,6 @@
 @submenu-item__active__border-color: @active__color;
 @submenu-item__active__color: @navigation-level0-item__active__color;
 
-
 //  Desktop navigation
 @navigation-desktop-level0-item__line-height: 47px;
 @submenu-desktop__font-weight: @font-weight__regular;
@@ -130,7 +129,7 @@
 @button-primary__active__border: 1px solid @link__hover__color;
 @button-primary__active__color: @color-white;
 
-@button-primary__background:  #9400d3;
+@button-primary__background: #9400d3;
 @button-primary__border: 1px solid #000080;
 @button-primary__color: #fff;
 
@@ -166,15 +165,15 @@
 //  Loaders
 //  ---------------------------------------------
 
-@loader-overlay__background-color: rgba(255, 255, 255, .7);
+@loader-overlay__background-color: rgba(255, 255, 255, 0.7);
 
 //
 //  Forms
 //  ---------------------------------------------
 
-
 //  Select
-@select__background: @form-element-input__background url('../images/select-bg.svg') no-repeat 100% 45%;
+@select__background: @form-element-input__background
+  url('../images/select-bg.svg') no-repeat 100% 45%;
 @select__border: 1px solid @border-color__base;
 @select__height: 32px;
 @select__padding: 4px 25px @indent__xs @indent__s;
@@ -279,7 +278,7 @@
 
 //  Window overlay
 @overlay__background: @color-gray55;
-@overlay__opacity: .7;
+@overlay__opacity: 0.7;
 @overlay__opacity-old: 70;
 
 @gallery-thumb-border-color-active: @active__color;
