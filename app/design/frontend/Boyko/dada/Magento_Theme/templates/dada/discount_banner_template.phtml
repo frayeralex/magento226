@@ -1,6 +1,6 @@
 <div class="data dada-banner-container">
-    <img src="<?= $block->getBannerImgSrc() ?>" alt="banner">
+    <img src="<?= $block->getViewFileUrl('images/banner-image.png') ?>" alt="banner">
     <div class="discount-content">
-        <span><?= $this->getViewFileUrl('Magento_Theme::images/banner-image.png') ?></span>
+        <span><?= $block->getDiscountText() ?></span>
     </div>
 </div>
