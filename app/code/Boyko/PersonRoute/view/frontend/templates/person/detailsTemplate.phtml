@@ -1,0 +1,25 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+?>
+
+<div class="content-wrapper">
+    <h1 class="page-title">Person Details</h1>
+    <div class="person-details">
+        <?php if ($block->getPersonName()):?>
+            <div class="name">
+                <span>First Name: </span>
+                <?= /* @escapeNotVerified */ $block->getPersonName(); ?>
+            </div>
+        <?php endif;?>
+        <?php if ($block->getPersonLastName()):?>
+            <div class="last-name">
+                <span>Second Name: </span>
+                <?= /* @escapeNotVerified */ $block->getPersonLastName(); ?>
+            </div>
+        <?php endif;?>
+    </div>
+
+    <div>
+        <a href="<?=  $block->getDefaultRouterLink(); ?>" target="_blank" >To get person data in json</a>
+    </div>
+</div>
