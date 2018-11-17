@@ -1,0 +1,80 @@
+<div class="couple-question-tab"  data-mage-init='{"customUaPhoneValidator":{}}'>
+    <h3><?= $block->escapeHtml(__('Get answers for couple questions...')) ?></h3>
+    <div class="form-wrapper">
+        <form
+            action="#"
+            class="form product-question-tab"
+            data-hasrequired="* Required Fields"
+            data-mage-init='{"validation":{}}'
+            novalidate="novalidate">
+            <fieldset class="fieldset">
+                <div class="field required">
+                    <label class="label" for="q-name">
+                        <span><?= $block->escapeHtml(__('Name')) ?></span>
+                    </label>
+                    <div class="control">
+                        <input
+                            id="q-name"
+                            name="q-name"
+                            type="text"
+                            data-validate="{required:true}"
+                            placeholder="<?= $block->escapeHtmlAttr(__('Enter you name')) ?>"
+                            title="<?= $block->escapeHtmlAttr(__('Name')) ?>"
+                            class="input-text">
+                    </div>
+                </div>
+                <div class="field required">
+                    <label class="label" for="q-email">
+                        <span><?= $block->escapeHtml(__('Email')) ?></span>
+                    </label>
+                    <div class="control">
+                        <input
+                            id="q-email"
+                            name="q-email"
+                            type="text"
+                            data-validate="{required:true, email: true}"
+                            placeholder="<?= $block->escapeHtmlAttr(__('Enter you email')) ?>"
+                            title="<?= $block->escapeHtmlAttr(__('Email')) ?>"
+                            class="input-text">
+                    </div>
+                </div>
+                <div class="field required">
+                    <label class="label" for="q-phone">
+                        <span><?= $block->escapeHtml(__('Phone')) ?></span>
+                    </label>
+                    <div class="control">
+                        <input
+                            id="q-phone"
+                            name="q-phone"
+                            type="text"
+                            data-validate="{required:true, 'validate-ua-phone-number': true}"
+                            placeholder="<?= $block->escapeHtmlAttr(__('Enter you phone like +380...')) ?>"
+                            title="<?= $block->escapeHtmlAttr(__('Phone')) ?>"
+                            class="input-text">
+                    </div>
+                </div>
+                <div class="field required">
+                    <label class="label" for="q-question">
+                        <span><?= $block->escapeHtml(__('Question')) ?></span>
+                    </label>
+                    <div class="control">
+                        <textarea
+                            data-validate="{required:true}"
+                            name="q-question"
+                            id="q-question"
+                            cols="5"
+                            title="<?= $block->escapeHtmlAttr(__('Question')) ?>"
+                            rows="3">
+
+                        </textarea>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="actions-toolbar">
+                <div class="primary actions-primary">
+                    <button class="action submit primary"><?= $block->escapeHtml(__('Send')) ?></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
