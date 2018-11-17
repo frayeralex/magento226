@@ -6,7 +6,7 @@
             method="post"
             class="form question-form"
             data-hasrequired="* Required Fields"
-            data-mage-init='{"validation":{}, "customUaPhoneValidator":{}, "handleQuestionFormSubmit": {}}'
+            data-mage-init='{"validation":{}, "phoneValidator":{}, "handleQuestionFormSubmit": {}}'
             novalidate="novalidate"
             onsubmit="return false;"
         >
@@ -50,7 +50,7 @@
                             id="q-phone"
                             name="q-phone"
                             type="text"
-                            data-validate="{required:true, 'validate-ua-phone-number': true}"
+                            data-validate="{required:true, 'validate-phone-number': {country: 'Ukraine'}}"
                             placeholder="<?= $block->escapeHtmlAttr(__('Enter you phone like +380...')) ?>"
                             title="<?= $block->escapeHtmlAttr(__('Phone')) ?>"
                             class="input-text">

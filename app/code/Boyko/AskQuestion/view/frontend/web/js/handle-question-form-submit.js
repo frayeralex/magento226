@@ -13,9 +13,14 @@ define([
             cookieName: 'boyko_question_was_requested'
         },
 
+        nodes: {
+           submitBtn: null
+        },
+
         /** @inheritdoc */
         _create: function () {
             $(this.element).submit(this.submitForm.bind(this));
+            this.nodes.submitBtn = $(this.element).find('button.submit');
         },
 
         /**
@@ -54,10 +59,10 @@ define([
                 type:  $(this.element).attr('method'),
                 dataType: 'json',
                 context: this,
-
-                /** @inheritdoc */
-                success: function (response) {
-                    $('body').trigger('processStop');
+                beforeSend: function() {
+                    this.nodes.submitBtn.addClass('disabled');
+                }})
+                .done(function (response) {
                     alert({
                         title: $.mage.__(response.status),
                         content: $.mage.__(response.message)
@@ -70,18 +75,17 @@ define([
                             Date.now()
                         );
                     }
-                },
-
-                /** @inheritdoc */
-                error: function () {
-                    $('body').trigger('processStop');
+                })
+                .fail(function () {
                     alert({
                         title: $.mage.__('Error'),
                         /*eslint max-len: ["error", { "ignoreStrings": true }]*/
                         content: $.mage.__('Your request can not be submitted right now. Please, contact us directly via email or phone to get your Sample.')
                     });
-                }
-            });
+                })
+                .always(function () {
+                    this.nodes.submitBtn.removeClass('disabled');
+                });
         },
 
         getLastSuccessRequestMoment: function() {

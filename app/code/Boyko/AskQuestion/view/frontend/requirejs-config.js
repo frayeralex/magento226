@@ -1,6 +1,7 @@
 var config = {
     paths: {
-        customUaPhoneValidator: 'Boyko_AskQuestion/js/ua-phone-number-validator',
-        handleQuestionFormSubmit: 'Boyko_AskQuestion/js/handle-question-form-submit'
+        phoneValidator: 'Boyko_AskQuestion/js/phone-number-validator',
+        handleQuestionFormSubmit: 'Boyko_AskQuestion/js/handle-question-form-submit',
+        countryCodes: 'Boyko_AskQuestion/js/country-codes'
     }
 };
