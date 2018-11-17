@@ -1,12 +1,15 @@
-<div class="couple-question-tab"  data-mage-init='{"customUaPhoneValidator":{}}'>
-    <h3><?= $block->escapeHtml(__('Get answers for couple questions...')) ?></h3>
+<div class="couple-question-tab">
+    <h3><?= $block->escapeHtml(__('Some question?')) ?></h3>
     <div class="form-wrapper">
         <form
-            action="#"
-            class="form product-question-tab"
+            action="<?= $block->escapeUrl($block->getUrl('question/submit')) ?>"
+            method="post"
+            class="form question-form"
             data-hasrequired="* Required Fields"
-            data-mage-init='{"validation":{}}'
-            novalidate="novalidate">
+            data-mage-init='{"validation":{}, "customUaPhoneValidator":{}, "handleQuestionFormSubmit": {}}'
+            novalidate="novalidate"
+            onsubmit="return false;"
+        >
             <fieldset class="fieldset">
                 <div class="field required">
                     <label class="label" for="q-name">
@@ -72,7 +75,7 @@
             </fieldset>
             <div class="actions-toolbar">
                 <div class="primary actions-primary">
-                    <button class="action submit primary"><?= $block->escapeHtml(__('Send')) ?></button>
+                    <button class="action submit primary"><?= $block->escapeHtml(__('Send questions')) ?></button>
                 </div>
             </div>
         </form>
