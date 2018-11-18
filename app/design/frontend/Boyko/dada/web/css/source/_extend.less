@@ -1,33 +1,13 @@
-// variables
-@dada-font-family: 'Gotham';
+@import 'variables/_typography_extend.less';
+@import 'variables/_buttons_extend.less';
 
-@dada-button-primary__background: #9400d3;
-@dada-button-primary__border: 1px solid #000080;
-@dada-button-primary__color: #fff;
-
-// include fonts
 & when (@media-common = true) {
   @font-face {
-    font-family: @dada-font-family;
+    font-family: 'Gotham';
     src: url('@{baseDir}fonts/gotham-regular/gotham-regular.woff2')
         format('woff2'),
       url('@{baseDir}fonts/gotham-regular/gotham-regular.otf') format('otf');
     font-weight: 300;
     font-style: normal;
   }
-
-  .custom-tab {
-    .dropdown {
-      .lib-dropdown(@_dropdown-list-border: 2px solid #006400);
-    }
-  }
 }
-
-// Typography
-
-@font-family-name__base: @dada-font-family;
-
-//  Primary button
-@button-primary__background: @dada-button-primary__background;
-@button-primary__border: @dada-button-primary__border;
-@button-primary__color: @dada-button-primary__color;
