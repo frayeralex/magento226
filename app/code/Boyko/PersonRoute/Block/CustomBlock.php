@@ -21,7 +21,8 @@ class CustomBlock extends \Magento\Framework\View\Element\Template
         return $this;
     }
 
-    public function getDefaultRouterLink() {
+    public function getDefaultRouterLink()
+    {
         return $this->getUrl('boyko_personroute/demonstration/json');
     }
 }

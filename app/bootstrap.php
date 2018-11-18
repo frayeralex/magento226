@@ -11,7 +11,14 @@ error_reporting(E_ALL);
 #ini_set('display_errors', 1);
 
 /* PHP version validation */
-if (!defined('PHP_VERSION_ID') || !(PHP_VERSION_ID === 70002 || PHP_VERSION_ID === 70004 || PHP_VERSION_ID >= 70006)) {
+if (
+    !defined('PHP_VERSION_ID') ||
+    !(
+        PHP_VERSION_ID === 70002 ||
+        PHP_VERSION_ID === 70004 ||
+        PHP_VERSION_ID >= 70006
+    )
+) {
     if (PHP_SAPI == 'cli') {
         echo 'Magento supports 7.0.2, 7.0.4, and 7.0.6 or later. ' .
             'Please read http://devdocs.magento.com/guides/v2.2/install-gde/system-requirements.html';
@@ -38,7 +45,10 @@ $umaskFile = BP . '/magento_umask';
 $mask = file_exists($umaskFile) ? octdec(file_get_contents($umaskFile)) : 002;
 umask($mask);
 
-if (empty($_SERVER['ENABLE_IIS_REWRITES']) || ($_SERVER['ENABLE_IIS_REWRITES'] != 1)) {
+if (
+    empty($_SERVER['ENABLE_IIS_REWRITES']) ||
+    $_SERVER['ENABLE_IIS_REWRITES'] != 1
+) {
     /*
      * Unset headers used by IIS URL rewrites.
      */
@@ -50,18 +60,21 @@ if (empty($_SERVER['ENABLE_IIS_REWRITES']) || ($_SERVER['ENABLE_IIS_REWRITES'] !
 }
 
 if (
-    (!empty($_SERVER['MAGE_PROFILER']) || file_exists(BP . '/var/profiler.flag'))
-    && isset($_SERVER['HTTP_ACCEPT'])
-    && strpos($_SERVER['HTTP_ACCEPT'], 'text/html') !== false
+    (!empty($_SERVER['MAGE_PROFILER']) ||
+        file_exists(BP . '/var/profiler.flag')) &&
+    isset($_SERVER['HTTP_ACCEPT']) &&
+    strpos($_SERVER['HTTP_ACCEPT'], 'text/html') !== false
 ) {
-    $profilerFlag = isset($_SERVER['MAGE_PROFILER']) && strlen($_SERVER['MAGE_PROFILER'])
-        ? $_SERVER['MAGE_PROFILER']
-        : trim(file_get_contents(BP . '/var/profiler.flag'));
+    $profilerFlag =
+        isset($_SERVER['MAGE_PROFILER']) && strlen($_SERVER['MAGE_PROFILER'])
+            ? $_SERVER['MAGE_PROFILER']
+            : trim(file_get_contents(BP . '/var/profiler.flag'));
 
     \Magento\Framework\Profiler::applyConfig(
         $profilerFlag,
         BP,
-        !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest'
+        !empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
+            $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest'
     );
 }
 
