@@ -1,0 +1,17 @@
+<div id="timer-component" data-bind="scope:'timer'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+    {
+        "#timer-component": {
+            "Magento_Ui/js/core/app": {
+               "components": {
+                    "timer": {
+                        "component": "Boyko_Timer/js/timerComponent",
+                        "template" : "Boyko_Timer/timer-component-template"
+                    }
+                }
+            }
+        }
+    }
+    </script>
+</div>
