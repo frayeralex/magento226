@@ -15,7 +15,7 @@
     <div class="secondary">
         <button
                 id="dealer-btn"
-                data-mage-init='{"triggerPopup": {"data": null}}'
+                data-mage-init='{"triggerPopup": {"prefix": "clone"}}'
                 type="button"
                 class="action secondary right"
                 title="<?= $block->escapeHtmlAttr(__('Registration for dealer')) ?>">
@@ -193,25 +193,31 @@ require([
     var dataForm = $('#form-validate');
     var ignore = <?= /* @noEscape */ $_dob->isEnabled() ? '\'input[id$="full"]\'' : 'null' ?>;
 
-    dataForm.mage('validation', {
-    <?php if ($_dob->isEnabled()): ?>
-        errorPlacement: function(error, element) {
-            if (element.prop('id').search('full') !== -1) {
-                var dobElement = $(element).parents('.customer-dob'),
-                    errorClass = error.prop('class');
-                error.insertAfter(element.parent());
-                dobElement.find('.validate-custom').addClass(errorClass)
-                    .after('<div class="' + errorClass + '"></div>');
-            }
-            else {
-                error.insertAfter(element);
-            }
-        },
-        ignore: ':hidden:not(' + ignore + ')'
-    <?php else: ?>
-        ignore: ignore ? ':hidden:not(' + ignore + ')' : ':hidden'
-    <?php endif ?>
-    }).find('input:text').attr('autocomplete', 'off');
+    initFormValidation(dataForm);
+
+    $.initFormValidation = initFormValidation;
+
+    function initFormValidation(form) {
+        form.mage('validation', {
+            <?php if ($_dob->isEnabled()): ?>
+            errorPlacement: function(error, element) {
+                if (element.prop('id').search('full') !== -1) {
+                    var dobElement = $(element).parents('.customer-dob'),
+                        errorClass = error.prop('class');
+                    error.insertAfter(element.parent());
+                    dobElement.find('.validate-custom').addClass(errorClass)
+                        .after('<div class="' + errorClass + '"></div>');
+                }
+                else {
+                    error.insertAfter(element);
+                }
+            },
+            ignore: ':hidden:not(' + ignore + ')'
+            <?php else: ?>
+            ignore: ignore ? ':hidden:not(' + ignore + ')' : ':hidden'
+            <?php endif ?>
+        }).find('input:text').attr('autocomplete', 'off');
+    }
 
 });
 </script>
