@@ -1,4 +1,8 @@
-define(['jquery', 'Magento_Ui/js/modal/modal'], function($, modal) {
+define([
+    'jquery',
+    'Magento_Ui/js/modal/modal',
+    'passwordStrengthIndicator'
+], function($, modal, passwordStrengthIndicator) {
     'use strict';
 
     return function(config, element, data) {
@@ -6,10 +10,19 @@ define(['jquery', 'Magento_Ui/js/modal/modal'], function($, modal) {
             prefix = data && data.prefix ? data.prefix : 'clone',
             $cloneForm = $('.form-create-account').clone();
         $cloneForm.attr('id', prefix + '-' + 'form-create-account');
+        $cloneForm.removeClass('form-create-account');
+        $cloneForm.addClass(prefix + '-' + 'form-create-account');
 
-        $cloneForm.find('[id]').each(function(index, element) {
-            var $element = $(element),
-                id = $(element).attr('id'),
+        $cloneForm.find('.field.password').each(function(index, node) {
+            var $element = $(node);
+
+            $element.removeClass('password');
+            $element.addClass(prefix + '-' + 'password');
+        });
+
+        $cloneForm.find('[id]').each(function(index, node) {
+            var $element = $(node),
+                id = $(node).attr('id'),
                 name = $element.attr('name');
 
             $element.attr('id', prefix + '_' + id);
@@ -17,11 +30,11 @@ define(['jquery', 'Magento_Ui/js/modal/modal'], function($, modal) {
                 $element.attr('name', prefix + '_' + name);
             }
         });
-        $cloneForm.find('[for]').each(function(index, element) {
-            var $element = $(element),
-                htmlFor = $(element).attr('for');
+        $cloneForm.find('[for]').each(function(index, node) {
+            var $element = $(node),
+                htmlFor = $(node).attr('for');
 
-            $element.attr('for', prefix + htmlFor);
+            $element.attr('for', prefix + '_' + htmlFor);
         });
 
         var popup = modal(
@@ -44,9 +57,17 @@ define(['jquery', 'Magento_Ui/js/modal/modal'], function($, modal) {
         );
 
         $btn.on('click', function() {
-            var modal = popup.openModal();
+            var modalInstance = popup.openModal();
+
             $.initFormValidation($cloneForm);
-            modal.trigger('contentUpdated');
+            modalInstance.trigger('contentUpdated');
+
+            passwordStrengthIndicator(
+                {
+                    formSelector: '#' + prefix + '-' + 'form-create-account'
+                },
+                $cloneForm.find('.' + prefix + '-' + 'password')
+            );
         });
     };
 });
