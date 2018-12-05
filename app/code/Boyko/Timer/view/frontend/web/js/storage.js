@@ -3,25 +3,25 @@ define(['ko'], function(ko) {
 
     var _store = {};
 
-    function has(key) {
+    function hasObservable(key) {
         return _store.hasOwnProperty(key);
     }
 
     function getObservable(key) {
-        if (has(key)) {
+        if (hasObservable(key)) {
             return _store[key];
         }
     }
 
     function setObservable(key, value) {
-        if (!has(key)) {
+        if (!hasObservable(key)) {
             _store[key] = ko.observable(value);
             return getObservable(key);
         }
     }
 
     return {
-        has: has,
+        hasObservable: hasObservable,
         getObservable: getObservable,
         setObservable: setObservable
     };

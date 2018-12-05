@@ -21,7 +21,7 @@ define(['jquery', 'uiComponent', 'ko', 'Boyko_Timer/js/storage'], function(
         },
 
         initStoreObservable: function(name, value) {
-            return storage.has(name)
+            return storage.hasObservable(name)
                 ? storage.getObservable(name)
                 : storage.setObservable(name, value);
         },
