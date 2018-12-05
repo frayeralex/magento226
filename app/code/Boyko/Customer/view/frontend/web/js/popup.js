@@ -9,6 +9,7 @@ define([
         var $btn = $(element),
             prefix = data && data.prefix ? data.prefix : 'clone',
             $cloneForm = $('.form-create-account').clone();
+
         $cloneForm.attr('id', prefix + '-' + 'form-create-account');
         $cloneForm.removeClass('form-create-account');
         $cloneForm.addClass(prefix + '-' + 'form-create-account');
