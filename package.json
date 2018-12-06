@@ -14,8 +14,17 @@
     "scripts": {
         "grunt:reset": "grunt clean && grunt exec:dada && grunt less:dada",
         "grunt:serve": "grunt watch",
+        "prettier:js": "prettier --single-quote --write \"app/**/*.js\"",
         "prettier:less": "prettier --single-quote --write \"app/**/*.less\"",
         "prettier:php": "prettier --single-quote --write \"app/**/*.php\""
+    },
+    "prettier": {
+        "singleQuote": true,
+        "semi": true,
+        "tabWidth": 4,
+        "bracketSpacing": true,
+        "arrowParens": "avoid",
+        "trailingComma": "none"
     },
     "husky": {
         "hooks": {
