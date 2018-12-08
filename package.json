@@ -31,6 +31,14 @@
             "pre-commit": "lint-staged"
         }
     },
+    "prettier": {
+        "singleQuote": true,
+        "semi": true,
+        "tabWidth": 4,
+        "bracketSpacing": true,
+        "arrowParens": "avoid",
+        "trailingComma": "none"
+    },
     "lint-staged": {
         "app/**/*.less": [
             "npm run prettier:less",
@@ -38,6 +46,10 @@
         ],
         "app/**/*.php": [
             "npm run prettier:php",
+            "git add"
+        ],
+        "app/**/*.js": [
+            "npm run prettier:js",
             "git add"
         ]
     },
