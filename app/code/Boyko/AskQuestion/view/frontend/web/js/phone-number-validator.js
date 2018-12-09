@@ -1,31 +1,37 @@
-define(['jquery', 'countryCodes', 'mage/validation', 'mage/translate'], function ($, codes) {
+define(['jquery', 'countryCodes'], function($, codes) {
     'use strict';
-    var codeMap = codes();
-    // var uaPhonePattern = /^\+380[0-9]{9}$/;
 
-    function validCountryNumber(number, country) {
-        var parseNumber = parseInt(number.replace('+', ''), 10);
+    return function(targetModule) {
+        var codeMap = codes();
+        // var uaPhonePattern = /^\+380[0-9]{9}$/;
 
-        if (number.indexOf('+') !== 0) return false;
-        if (!parseNumber) return false;
-        if (!codeMap[country]) return false;
-        if (number.indexOf(codeMap[country]) !== 1) return false;
+        function validCountryNumber(number, country) {
+            var parseNumber = parseInt(number.replace('+', ''), 10);
 
-        return number.length === 12 || number.length === 13;
-    }
+            if (number.indexOf('+') !== 0) return false;
+            if (!parseNumber) return false;
+            if (!codeMap[country]) return false;
+            if (number.indexOf(codeMap[country]) !== 1) return false;
 
+            return number.length === 12 || number.length === 13;
+        }
 
-    $.each({
-        'validate-phone-number': [
-            function (value, element, params) {
-                // return uaPhonePattern.test(value);
-                return validCountryNumber(value, params.country);
+        $.each(
+            {
+                'validate-phone-number': [
+                    function(value, element, params) {
+                        // return uaPhonePattern.test(value);
+                        return validCountryNumber(value, params.country);
+                    },
+                    $.mage.__('Please enter a valid phone number.')
+                ]
             },
-            $.mage.__('Please enter a valid phone number.')
-        ]
-    }, function (i, rule) {
-        rule.unshift(i);
-        $.validator.addMethod.apply($.validator, rule);
-    });
-});
+            function(i, rule) {
+                rule.unshift(i);
+                $.validator.addMethod.apply($.validator, rule);
+            }
+        );
 
+        return targetModule;
+    };
+});

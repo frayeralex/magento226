@@ -1,7 +1,7 @@
-define([], function () {
+define([], function() {
     'use strict';
 
-    return function () {
+    return function() {
         return {
             "Afghanistan": "93",
             "Aland Islands": "358",

@@ -4,7 +4,7 @@
         <referenceBlock name="product.info.details">
 
             <block class="Magento\Framework\View\Element\Template"
-                   name="custom.tab.product"
+                   name="ask.tab.product"
                    template="Boyko_AskQuestion::product/view/questions_tab.phtml"
                    group="detailed_info">
                 <arguments>

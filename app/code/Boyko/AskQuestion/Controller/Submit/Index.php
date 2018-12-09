@@ -34,11 +34,20 @@ class Index extends \Magento\Framework\App\Action\Action
         /** @var Http $request */
         $request = $this->getRequest();
         try {
-            if (!$this->formKeyValidator->validate($request) || $request->getParam('hideit')) {
-                throw new LocalizedException(__('Something went wrong. Probably you were away for quite a long time already. Please, reload the page and try again.'));
+            if (
+                !$this->formKeyValidator->validate($request) ||
+                $request->getParam('hideit')
+            ) {
+                throw new LocalizedException(
+                    __(
+                        'Something went wrong. Probably you were away for quite a long time already. Please, reload the page and try again.'
+                    )
+                );
             }
             if (!$request->isAjax()) {
-                throw new LocalizedException(__('This request is not valid and can not be processed.'));
+                throw new LocalizedException(
+                    __('This request is not valid and can not be processed.')
+                );
             }
             // @TODO: #111 Backend form validation
             // Here we must also process backend validation or all form fields.
@@ -49,14 +58,16 @@ class Index extends \Magento\Framework\App\Action\Action
             ];
         } catch (LocalizedException $e) {
             $data = [
-                'status'  => self::STATUS_ERROR,
+                'status' => self::STATUS_ERROR,
                 'message' => $e->getMessage()
             ];
         }
         /**
          * @var \Magento\Framework\Controller\Result\Json $controllerResult
          */
-        $controllerResult = $this->resultFactory->create(ResultFactory::TYPE_JSON);
+        $controllerResult = $this->resultFactory->create(
+            ResultFactory::TYPE_JSON
+        );
         return $controllerResult->setData($data);
     }
 }
