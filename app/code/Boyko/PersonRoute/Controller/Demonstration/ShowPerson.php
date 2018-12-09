@@ -10,7 +10,6 @@ namespace Boyko\PersonRoute\Controller\Demonstration;
 
 use Magento\Framework\Controller\ResultFactory;
 
-
 class ShowPerson extends \Magento\Framework\App\Action\Action
 {
     /**
@@ -22,7 +21,8 @@ class ShowPerson extends \Magento\Framework\App\Action\Action
         $lastName = "Boyko";
 
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
-        $resultPage->getLayout()
+        $resultPage
+            ->getLayout()
             ->getBlock('boyko.person.page.details')
             ->setPersonName($name)
             ->setPersonLastName($lastName);
