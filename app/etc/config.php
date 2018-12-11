@@ -4,6 +4,7 @@ return [
         'Magento_Store' => 1,
         'Magento_Directory' => 1,
         'Magento_Eav' => 1,
+        'Boyko_CustomWidget' => 1,
         'Magento_Customer' => 1,
         'Boyko_PersonRoute' => 1,
         'Boyko_ProductTab' => 1,
